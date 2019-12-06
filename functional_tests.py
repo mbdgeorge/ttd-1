@@ -1,10 +1,13 @@
 from selenium import webdriver
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
+
 import unittest
 
 class NewVisitorTest(unittest.TestCase):
 
     def setUp(self):
-        self.browser = webdriver.Firefox()
+        binary = FirefoxBinary(r'C:\Program Files\Mozilla Firefox\firefox.exe')
+        self.browser = webdriver.Firefox(firefox_binary=binary)
 
     def tearDown(self):
         self.browser.quit()
