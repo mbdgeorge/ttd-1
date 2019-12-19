@@ -37,10 +37,8 @@ class NewVisitorTest(unittest.TestCase):
 
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
-        self.assertTrue(
-            any(row.text == '1: Buy Christmas presents' for row in rows),
-            "New to-do item did not appear in table"
-        )
+        self.assertIn('1: Buy Christmas presents', [row.text for row in rows])
+        self.assertIn('2: Wrap presents', [row.text for row in rows])
 
         #There is still a text box inviting user to add another item.
         #User enter "Start Refinancing"
